@@ -1,5 +1,8 @@
 """
 最大回文子串
+给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+
+best: 988ms
 🔗： https://leetcode-cn.com/problems/longest-palindromic-substring/
 """
 
@@ -53,7 +56,6 @@ class Solution_V1(object):
                     break
 
             while True:
-
                 try:
                     left, right = s[left_edge], s[right_edge]
                     if left == right:
@@ -70,8 +72,33 @@ class Solution_V1(object):
 
 class Solution_V2(object):
     def longestPalindrome(self, s):
-        pass
+        length = len(s)
+        l, r = 0, 0
+
+        for mid in range(length):
+            left_edge, right_edge = mid - 1 if mid - 1 >= 0 else 0, mid + 1
+
+            # 查找有没有相邻元素相同， 将边界向右推
+            while right_edge < length:
+
+                if s[mid] == s[right_edge]:
+                    l, r = (mid, right_edge) if right_edge - \
+                        mid > r - l else (l, r)
+                    right_edge += 1
+                else:
+                    break
+
+            while left_edge >= 0 and right_edge <= length:
+                if s[left_edge: right_edge + 1] == s[left_edge: right_edge + 1][::-1]:
+                    l, r = (left_edge, right_edge) if right_edge - \
+                        left_edge > r - l else (l, r)
+                    left_edge -= 1
+                    right_edge += 1
+                else:
+                    break
+        print(l, r)
+        return s[l:r+1]
 
 
 if __name__ == "__main__":
-    print(Solution_V1().longestPalindrome("bananas"))
+    print(Solution_V2().longestPalindrome("ababa"))
