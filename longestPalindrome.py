@@ -1,6 +1,8 @@
 """
-最大回文
+最大回文子串
+🔗： https://leetcode-cn.com/problems/longest-palindromic-substring/
 """
+
 
 class Solution(object):
     P = list()
@@ -64,27 +66,11 @@ class Solution_V1(object):
                 except IndexError:
                     break
         return res
-        #     y = 1
-        #     while y <= x:
-        #         front, mid = s[x - y], s[x]
-        #         try:
-        #             back = s[x + y]
-        #         except IndexError:
-        #             if front == mid:
-        #                 res = s[x - y:x +
-        #                         1] if len(s[x - y:x + 1]) > len(res) else res
-        #             break
-        #         if front == back:
-        #             res = s[x - y:x + y +
-        #                     1] if len(s[x - y:x + y + 1]) > len(res) else res
 
-        #         # elif back == mid:
-        #         #     res = s[x + 1:x +
-        #         #             y] if len(s[x + 1:x + y]) > len(res) else res
-        #         else:
-        #             break
-        #         y += 1
-        # return res
+
+class Solution_V2(object):
+    def longestPalindrome(self, s):
+        pass
 
 
 if __name__ == "__main__":
