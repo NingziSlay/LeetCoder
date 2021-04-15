@@ -66,7 +66,7 @@ func (b *Bitmap) Del(n uint32) {
 	// x &= ^y 表示对 y 取反后与 x
 	//b.lock.Lock()
 	//defer b.lock.Unlock()
-	b.bitmap[x] &= ^ y
+	b.bitmap[x] &= ^y
 }
 
 // Contain 验证一个元素是否存在于 Bitmap 中

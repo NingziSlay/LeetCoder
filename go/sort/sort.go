@@ -3,9 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(Sort([]int{2, 5, 1, 9, 7, 3, 4}))
-	fmt.Println(Sort([]int{1, 3, 10, 2, 4, 7, 8}))
-	fmt.Println(Sort([]int{4, 5, 3, 2, 5}))
+	//       16 8 4 2 1
+	// 	0 0 0 0 0 0 1 1 = 3
+	//  1 1 1 1 1 1 0 0  取反
+	//  0 0 0 0 1 1 1 1
+	//  0 0 0 0 1 1 0 0
+	var a, b = 15, 3
+	fmt.Println(a &^ b)
 }
 
 // 归并排序
